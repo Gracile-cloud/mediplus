@@ -36,12 +36,12 @@
      steps:
        - name: Check my ssh key
          run: |
-           echo "${{ secrets.SSH_KEY }}" > sshkey.pem
-           chmod 600 sshkey.pem
-           cat sshkey.pem
+           echo "${{ secrets.SSH_KEY }}" > mykey.pem
+           chmod 600 mykey.pem
+           cat mykey.pem
 
-           ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker pull 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
+           ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@107.21.24.212 "docker pull 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
 
-                     ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker rm -f mediplus"
+           ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@107.21.24.212 "docker rm -f mediplus"
 
-           ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker run -d --name mediplus -p 80:80 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
+           ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@107.21.24.212 "docker run -d --name mediplus -p 80:80 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
