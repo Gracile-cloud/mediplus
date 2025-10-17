@@ -22,7 +22,7 @@
 
        - name: Login to Amazon ECR
          run: |
-           aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 892004491300.dkr.ecr.eu-north-1.amazonaws.com
+           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 387132115905.dkr.ecr.us-east-1.amazonaws.com
 
        - name: Build, tag, and push image to Amazon ECR
          run: |
