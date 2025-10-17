@@ -26,9 +26,9 @@
 
        - name: Build, tag, and push image to Amazon ECR
          run: |
-           docker build -t mediplus:v1 .
-           docker tag mediplus:v1 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v1
-           docker push 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v1
+           docker build -t mediplus:v2 .
+           docker tag mediplus:v2 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2
+           docker push 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2
 
    deploy:
      runs-on: ubuntu-latest
@@ -40,6 +40,6 @@
            chmod 600 sshkey.pem
            cat sshkey.pem
 
-           ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker ps"
+           ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker pull 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
 
-           ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "hostnamectl"
+           ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker run -d -p 80:80 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
