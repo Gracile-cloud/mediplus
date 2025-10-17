@@ -42,6 +42,6 @@
 
            ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker pull 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
 
-                      ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker rm -f mediplus"
+                     ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker rm -f mediplus"
 
            ssh -o StrictHostKeyChecking=no -i sshkey.pem ubuntu@107.21.24.212 "docker run -d --name mediplus -p 80:80 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:v2"
