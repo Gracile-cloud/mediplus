@@ -41,7 +41,7 @@ jobs:
         GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
       run: |
         git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Gracile-cloud/kubernetes-manifest.git
-        cd kubernetes-manifest/mediplus-yaml
+        cd kubernetes-manifest/medplux-yaml
         cat deployment.yaml
 
         sed -i "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 387132115905.dkr.ecr.us-east-1.amazonaws.com/mediplus:$GITHUB_RUN_NUMBER+g" deployment.yaml
